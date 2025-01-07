@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Controle de Galpões</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Galpões</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+            background-color: #f8f9fa; /* Cor de fundo clara */
+            color: #343a40; /* Cor do texto */
+        }
+        .logo {
+            width: 150px; /* Ajuste do tamanho da logomarca */
+            margin: 0 auto;
+            display: block;
+        }
+        .button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            font-size: 18px;
+            color: white;
+            background-color: #007bff; /* Cor azul */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #0056b3; /* Azul mais escuro ao passar o mouse */
+        }
+        form label {
+            font-weight: bold;
+            color: #495057;
+        }
+        form input, form textarea {
+            width: 80%;
+            padding: 10px;
+            margin: 5px 0 15px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+        form button {
+            padding: 10px 20px;
+            background-color: #28a745; /* Cor verde */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        form button:hover {
+            background-color: #218838; /* Verde mais escuro ao passar o mouse */
+        }
+        #home, #galpao1, #galpao2, #galpao3, #galpao4 {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Página Inicial -->
+    <div id="home" style="display: block;">
+        <!-- Adicionando a logomarca -->
+        <img src="link-ou-caminho-da-logomarca.png" alt="Logomarca" class="logo">
+        <h1>Controle de Galpões - Produção de Ovos</h1>
+        <button class="button" onclick="showPage('galpao1')">Galpão 1</button>
+        <button class="button" onclick="showPage('galpao2')">Galpão 2</button>
+        <button class="button" onclick="showPage('galpao3')">Galpão 3</button>
+        <button class="button" onclick="showPage('galpao4')">Galpão 4</button>
+        <button class="button">Relatório Geral</button>
+    </div>
+
+    <!-- Página Galpão 1 -->
+    <div id="galpao1">
+        <h1>Registro de Dados - Galpão 1</h1>
+        <form>
+            <label for="data1">Data:</label><br>
+            <input type="date" id="data1" name="data"><br>
+
+            <label for="ovos1">Quantidade de Ovos:</label><br>
+            <input type="number" id="ovos1" name="ovos"><br>
+
+            <label for="mortas1">Quantidade de Galinhas Mortas:</label><br>
+            <input type="number" id="mortas1" name="mortas"><br>
+
+            <label for="racao1">Quantidade de Ração Usada (kg):</label><br>
+            <input type="number" id="racao1" name="racao"><br>
+
+            <label for="observacoes1">Observações:</label><br>
+            <textarea id="observacoes1" name="observacoes" rows="4" cols="30"></textarea><br>
+
+            <button type="submit">Salvar Dados</button>
+        </form>
+        <button class="button" onclick="showPage('home')">Voltar</button>
+    </div>
+
+    <!-- Página Galpão 2 -->
+    <div id="galpao2">
+        <h1>Registro de Dados - Galpão 2</h1>
+        <form>
+            <label for="data2">Data:</label><br>
+            <input type="date" id="data2" name="data"><br>
+
+            <label for="ovos2">Quantidade de Ovos:</label><br>
+            <input type="number" id="ovos2" name="ovos"><br>
+
+            <label for="mortas2">Quantidade de Galinhas Mortas:</label><br>
+            <input type="number" id="mortas2" name="mortas"><br>
+
+            <label for="racao2">Quantidade de Ração Usada (kg):</label><br>
+            <input type="number" id="racao2" name="racao"><br>
+
+            <label for="observacoes2">Observações:</label><br>
+            <textarea id="observacoes2" name="observacoes" rows="4" cols="30"></textarea><br>
+
+            <button type="submit">Salvar Dados</button>
+        </form>
+        <button class="button" onclick="showPage('home')">Voltar</button>
+    </div>
+
+    <!-- Página Galpão 3 -->
+    <div id="galpao3">
+        <h1>Registro de Dados - Galpão 3</h1>
+        <form>
+            <label for="data3">Data:</label><br>
+            <input type="date" id="data3" name="data"><br>
+
+            <label for="ovos3">Quantidade de Ovos:</label><br>
+            <input type="number" id="ovos3" name="ovos"><br>
+
+            <label for="mortas3">Quantidade de Galinhas Mortas:</label><br>
+            <input type="number" id="mortas3" name="mortas"><br>
+
+            <label for="racao3">Quantidade de Ração Usada (kg):</label><br>
+            <input type="number" id="racao3" name="racao"><br>
+
+            <label for="observacoes3">Observações:</label><br>
+            <textarea id="observacoes3" name="observacoes" rows="4" cols="30"></textarea><br>
+
+            <button type="submit">Salvar Dados</button>
+        </form>
+        <button class="button" onclick="showPage('home')">Voltar</button>
+    </div>
+
+    <!-- Página Galpão 4 -->
+    <div id="galpao4">
+        <h1>Registro de Dados - Galpão 4</h1>
+        <form>
+            <label for="data4">Data:</label><br>
+            <input type="date" id="data4" name="data"><br>
+
+            <label for="ovos4">Quantidade de Ovos:</label><br>
+            <input type="number" id="ovos4" name="ovos"><br>
+
+            <label for="mortas4">Quantidade de Galinhas Mortas:</label><br>
+            <input type="number" id="mortas4" name="mortas"><br>
+
+            <label for="racao4">Quantidade de Ração Usada (kg):</label><br>
+            <input type="number" id="racao4" name="racao"><br>
+
+            <label for="observacoes4">Observações:</label><br>
+            <textarea id="observacoes4" name="observacoes" rows="4" cols="30"></textarea><br>
+
+            <button type="submit">Salvar Dados</button>
+        </form>
+        <button class="button" onclick="showPage('home')">Voltar</button>
+    </div>
+
+    <!-- Script para Navegação -->
+    <script>
+        function showPage(pageId) {
+            document.getElementById('home').style.display = 'none';
+            document.getElementById('galpao1').style.display = 'none';
+            document.getElementById('galpao2').style.display = 'none';
+            document.getElementById('galpao3').style.display = 'none';
+            document.getElementById('galpao4').style.display = 'none';
+
+            document.getElementById(pageId).style.display = 'block';
+        }
+    </script>
+</body>
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
