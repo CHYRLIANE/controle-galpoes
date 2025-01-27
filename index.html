@@ -1,198 +1,283 @@
-<!DOCTYPE html>
-<html lang="en" >
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Controle de Galpões</title>
-  <link rel="stylesheet" href="./style.css">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema Vó Porcina - Gestão de Granja</title>
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="app.js"></script>
 </head>
 <body>
-<!-- partial:index.partial.html -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Controle de Galpões</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 20px;
-            background-color: #f8f9fa; /* Cor de fundo clara */
-            color: #343a40; /* Cor do texto */
-        }
-        .logo {
-            width: 150px; /* Ajuste do tamanho da logomarca */
-            margin: 0 auto;
-            display: block;
-        }
-        .button {
-            display: block;
-            margin: 10px auto;
-            padding: 10px 20px;
-            font-size: 18px;
-            color: white;
-            background-color: #007bff; /* Cor azul */
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .button:hover {
-            background-color: #0056b3; /* Azul mais escuro ao passar o mouse */
-        }
-        form label {
-            font-weight: bold;
-            color: #495057;
-        }
-        form input, form textarea {
-            width: 80%;
-            padding: 10px;
-            margin: 5px 0 15px;
-            border: 1px solid #ced4da;
-            border-radius: 5px;
-        }
-        form button {
-            padding: 10px 20px;
-            background-color: #28a745; /* Cor verde */
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        form button:hover {
-            background-color: #218838; /* Verde mais escuro ao passar o mouse */
-        }
-        #home, #galpao1, #galpao2, #galpao3, #galpao4 {
-            display: none;
-        }
-    </style>
-</head>
-<body>
-    <!-- Página Inicial -->
-    <div id="home" style="display: block;">
-        <!-- Adicionando a logomarca -->
-        <img src="link-ou-caminho-da-logomarca.png" alt="Logomarca" class="logo">
-        <h1>Controle de Galpões - Produção de Ovos</h1>
-        <button class="button" onclick="showPage('galpao1')">Galpão 1</button>
-        <button class="button" onclick="showPage('galpao2')">Galpão 2</button>
-        <button class="button" onclick="showPage('galpao3')">Galpão 3</button>
-        <button class="button" onclick="showPage('galpao4')">Galpão 4</button>
-        <button class="button">Relatório Geral</button>
-    </div>
-
-    <!-- Página Galpão 1 -->
-    <div id="galpao1">
-        <h1>Registro de Dados - Galpão 1</h1>
-        <form>
-            <label for="data1">Data:</label><br>
-            <input type="date" id="data1" name="data"><br>
-
-            <label for="ovos1">Quantidade de Ovos:</label><br>
-            <input type="number" id="ovos1" name="ovos"><br>
-
-            <label for="mortas1">Quantidade de Galinhas Mortas:</label><br>
-            <input type="number" id="mortas1" name="mortas"><br>
-
-            <label for="racao1">Quantidade de Ração Usada (kg):</label><br>
-            <input type="number" id="racao1" name="racao"><br>
-
-            <label for="observacoes1">Observações:</label><br>
-            <textarea id="observacoes1" name="observacoes" rows="4" cols="30"></textarea><br>
-
-            <button type="submit">Salvar Dados</button>
+  <div id="app">
+    <!-- Login Section -->
+    <section id="login" class="hidden">
+      <div class="login-container">
+        <img src="logo.svg" alt="Vó Porcina" class="login-logo">
+        <form id="login-form">
+          <h2>Login</h2>
+          <input type="text" id="login-cpf" placeholder="CPF" required>
+          <input type="password" id="login-senha" placeholder="Senha" required>
+          <button type="submit">Entrar</button>
+          <p>Não tem conta? <a href="#" id="signup-link">Cadastre-se</a></p>
         </form>
-        <button class="button" onclick="showPage('home')">Voltar</button>
-    </div>
+      </div>
+    </section>
 
-    <!-- Página Galpão 2 -->
-    <div id="galpao2">
-        <h1>Registro de Dados - Galpão 2</h1>
-        <form>
-            <label for="data2">Data:</label><br>
-            <input type="date" id="data2" name="data"><br>
-
-            <label for="ovos2">Quantidade de Ovos:</label><br>
-            <input type="number" id="ovos2" name="ovos"><br>
-
-            <label for="mortas2">Quantidade de Galinhas Mortas:</label><br>
-            <input type="number" id="mortas2" name="mortas"><br>
-
-            <label for="racao2">Quantidade de Ração Usada (kg):</label><br>
-            <input type="number" id="racao2" name="racao"><br>
-
-            <label for="observacoes2">Observações:</label><br>
-            <textarea id="observacoes2" name="observacoes" rows="4" cols="30"></textarea><br>
-
-            <button type="submit">Salvar Dados</button>
+    <!-- Signup Section -->
+    <section id="signup" class="hidden">
+      <div class="signup-container">
+        <img src="logo.svg" alt="Vó Porcina" class="signup-logo">
+        <form id="signup-form">
+          <h2>Cadastro</h2>
+          <input type="text" id="signup-nome" placeholder="Nome Completo" required>
+          <input type="text" id="signup-cpf" placeholder="CPF" required>
+          <input type="password" id="signup-senha" placeholder="Senha" required>
+          <input type="password" id="signup-confirmar-senha" placeholder="Confirmar Senha" required>
+          <div class="role-selection">
+            <label>
+              <input type="radio" name="signup-role" value="colaborador" required> Colaborador
+            </label>
+            <label>
+              <input type="radio" name="signup-role" value="administrador"> Administrador
+            </label>
+          </div>
+          <button type="submit">Cadastrar</button>
+          <p>Já tem conta? <a href="#" id="login-link">Faça login</a></p>
         </form>
-        <button class="button" onclick="showPage('home')">Voltar</button>
-    </div>
+      </div>
+    </section>
 
-    <!-- Página Galpão 3 -->
-    <div id="galpao3">
-        <h1>Registro de Dados - Galpão 3</h1>
-        <form>
-            <label for="data3">Data:</label><br>
-            <input type="date" id="data3" name="data"><br>
+    <!-- Main App Content -->
+    <section id="main-app" class="hidden">
+      <header>
+        <div class="logo">
+          <img src="logo.svg" alt="Vó Porcina">
+        </div>
+        <nav>
+          <button id="dashboard-nav">Dashboard</button>
+          <button id="funcionarios-nav">Funcionários</button>
+          <button id="galpoes-nav">Galpões</button>
+          <button id="relatorios-nav">Relatórios</button>
+        </nav>
+        <div class="user-profile">
+          <span id="user-name">João Silva</span>
+          <button id="logout">Sair</button>
+        </div>
+      </header>
 
-            <label for="ovos3">Quantidade de Ovos:</label><br>
-            <input type="number" id="ovos3" name="ovos"><br>
+      <main>
+        <!-- Dashboard Section (existing content) -->
+        <section id="dashboard" class="active-section">
+          <div class="summary-cards">
+            <div class="card ovos-producao">
+              <h3>Produção de Ovos</h3>
+              <div id="ovos-total">1.250</div>
+              <small>Hoje</small>
+            </div>
+            <div class="card estoque-ovos">
+              <h3>Estoque de Ovos</h3>
+              <div id="ovos-estoque">15.750</div>
+              <small>Total</small>
+            </div>
+            <div class="card racao-consumo">
+              <h3>Consumo de Ração</h3>
+              <div id="racao-consumida">250,5 kg</div>
+              <small>Hoje</small>
+            </div>
+            <div class="card mortalidade">
+              <h3>Mortalidade</h3>
+              <div id="galinhas-mortas">12</div>
+              <small>Hoje</small>
+            </div>
+          </div>
 
-            <label for="mortas3">Quantidade de Galinhas Mortas:</label><br>
-            <input type="number" id="mortas3" name="mortas"><br>
+          <div class="graficos">
+            <div class="grafico producao-ovos">
+              <h3>Produção de Ovos</h3>
+              <canvas id="chart-producao-ovos"></canvas>
+            </div>
+            <div class="grafico consumo-racao">
+              <h3>Consumo de Ração</h3>
+              <canvas id="chart-consumo-racao"></canvas>
+            </div>
+          </div>
 
-            <label for="racao3">Quantidade de Ração Usada (kg):</label><br>
-            <input type="number" id="racao3" name="racao"><br>
+          <div class="galpoes-acesso-rapido">
+            <h3>Galpões</h3>
+            <div class="galpoes-grid">
+              <button class="galpao-btn" data-galpao="1">Galpão 1</button>
+              <button class="galpao-btn" data-galpao="2">Galpão 2</button>
+              <button class="galpao-btn" data-galpao="3">Galpão 3</button>
+            </div>
+          </div>
+        </section>
 
-            <label for="observacoes3">Observações:</label><br>
-            <textarea id="observacoes3" name="observacoes" rows="4" cols="30"></textarea><br>
+        <!-- Funcionários Section -->
+        <section id="funcionarios" class="hidden">
+          <h2>Funcionários</h2>
+          <div class="funcionarios-container">
+            <button id="adicionar-funcionario">Adicionar Funcionário</button>
+            <div id="modal-adicionar-funcionario" class="modal hidden">
+              <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h3>Cadastrar Novo Funcionário</h3>
+                <form id="form-adicionar-funcionario">
+                  <input type="text" id="novo-funcionario-nome" placeholder="Nome Completo" required>
+                  <input type="text" id="novo-funcionario-cpf" placeholder="CPF" required>
+                  <select id="novo-funcionario-role" required>
+                    <option value="colaborador">Colaborador</option>
+                    <option value="administrador">Administrador</option>
+                  </select>
+                  <input type="password" id="novo-funcionario-senha" placeholder="Senha" required>
+                  <button type="submit">Salvar Funcionário</button>
+                </form>
+              </div>
+            </div>
+            <table id="funcionarios-tabela">
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>CPF</th>
+                  <th>Função</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody id="funcionarios-lista">
+                <!-- Funcionários serão adicionados dinamicamente -->
+              </tbody>
+            </table>
+          </div>
+        </section>
 
-            <button type="submit">Salvar Dados</button>
-        </form>
-        <button class="button" onclick="showPage('home')">Voltar</button>
-    </div>
+        <!-- Galpões Section -->
+        <section id="galpoes" class="hidden">
+          <h2>Galpões</h2>
+          <div class="galpoes-container">
+            <button id="adicionar-galpao">Adicionar Galpão</button>
+            <div id="modal-adicionar-galpao" class="modal hidden">
+              <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h3>Cadastrar Novo Galpão</h3>
+                <form id="form-adicionar-galpao">
+                  <input type="text" id="novo-galpao-nome" placeholder="Nome do Galpão" required>
+                  <input type="text" id="novo-galpao-capacidade" placeholder="Capacidade" required>
+                  <button type="submit">Salvar Galpão</button>
+                </form>
+              </div>
+            </div>
+            <div id="galpoes-lista">
+              <!-- Galpões serão adicionados dinamicamente -->
+            </div>
+          </div>
+        </section>
 
-    <!-- Página Galpão 4 -->
-    <div id="galpao4">
-        <h1>Registro de Dados - Galpão 4</h1>
-        <form>
-            <label for="data4">Data:</label><br>
-            <input type="date" id="data4" name="data"><br>
+        <!-- Relatórios Section -->
+        <section id="relatorios" class="hidden">
+          <h2>Relatórios</h2>
+          <div class="relatorios-filtros">
+            <select id="relatorio-tipo">
+              <option value="diario">Relatório Diário</option>
+              <option value="semanal">Relatório Semanal</option>
+              <option value="mensal">Relatório Mensal</option>
+            </select>
+            <input type="date" id="relatorio-data-inicio">
+            <input type="date" id="relatorio-data-fim">
+            <button id="gerar-relatorio">Gerar Relatório</button>
+          </div>
+          <div id="relatorio-resultado">
+            <!-- Resultado do relatório será exibido aqui -->
+          </div>
+        </section>
 
-            <label for="ovos4">Quantidade de Ovos:</label><br>
-            <input type="number" id="ovos4" name="ovos"><br>
+        <!-- Colaborador Cadastro Diário Section -->
+        <section id="colaborador-cadastro" class="hidden">
+          <h2>Registro Diário</h2>
+          <form id="registro-diario-form">
+            <div class="form-section">
+              <h3>Data do Registro</h3>
+              <div class="input-group">
+                <label for="registro-data">Data</label>
+                <input type="date" id="registro-data" required>
+              </div>
+            </div>
+            <div class="form-section">
+              <h3>Ração</h3>
+              <div class="input-group">
+                <label for="racao-consumida">Ração Consumida (kg)</label>
+                <input type="number" id="racao-consumida" step="0.1" min="0" required>
+              </div>
+              <div class="input-group">
+                <label for="racao-reposicao">Reposição de Ração (kg)</label>
+                <input type="number" id="racao-reposicao" step="0.1" min="0">
+              </div>
+            </div>
 
-            <label for="mortas4">Quantidade de Galinhas Mortas:</label><br>
-            <input type="number" id="mortas4" name="mortas"><br>
+            <div class="form-section">
+              <h3>Ovos</h3>
+              <div class="input-group">
+                <label for="ovos-produzidos">Ovos Produzidos</label>
+                <input type="number" id="ovos-produzidos" min="0" required>
+              </div>
+              <div class="input-group">
+                <label for="ovos-perdidos">Ovos Perdidos</label>
+                <input type="number" id="ovos-perdidos" min="0" required>
+              </div>
+            </div>
 
-            <label for="racao4">Quantidade de Ração Usada (kg):</label><br>
-            <input type="number" id="racao4" name="racao"><br>
+            <div class="form-section">
+              <h3>Mortalidade</h3>
+              <div class="input-group">
+                <label for="galinhas-mortas">Número de Galinhas Mortas</label>
+                <input type="number" id="galinhas-mortas" min="0" required>
+              </div>
+            </div>
 
-            <label for="observacoes4">Observações:</label><br>
-            <textarea id="observacoes4" name="observacoes" rows="4" cols="30"></textarea><br>
+            <div class="form-section">
+              <h3>Observações</h3>
+              <div class="input-group">
+                <label for="observacoes">Observações Gerais</label>
+                <textarea id="observacoes" rows="4"></textarea>
+              </div>
+            </div>
 
-            <button type="submit">Salvar Dados</button>
-        </form>
-        <button class="button" onclick="showPage('home')">Voltar</button>
-    </div>
+            <div class="form-section">
+              <label for="galpao-select">Selecione o Galpão</label>
+              <select id="galpao-select" required>
+                <option value="">Escolha um Galpão</option>
+                <option value="1">Galpão 1</option>
+                <option value="2">Galpão 2</option>
+                <option value="3">Galpão 3</option>
+              </select>
+            </div>
 
-    <!-- Script para Navegação -->
-    <script>
-        function showPage(pageId) {
-            document.getElementById('home').style.display = 'none';
-            document.getElementById('galpao1').style.display = 'none';
-            document.getElementById('galpao2').style.display = 'none';
-            document.getElementById('galpao3').style.display = 'none';
-            document.getElementById('galpao4').style.display = 'none';
+            <div id="admin-financial-section" class="form-section hidden">
+              <h3>Informações Financeiras Administrativas</h3>
+              <div class="input-group">
+                <label for="preco-racao-compra">Preço de Compra da Ração (R$/kg)</label>
+                <input type="number" id="preco-racao-compra" step="0.01" min="0">
+              </div>
+              <div class="input-group">
+                <label for="ovos-vendidos">Ovos Vendidos</label>
+                <input type="number" id="ovos-vendidos" min="0">
+              </div>
+              <div class="input-group">
+                <label for="preco-ovos-venda">Preço de Venda dos Ovos (R$/unidade)</label>
+                <input type="number" id="preco-ovos-venda" step="0.01" min="0">
+              </div>
+              <div class="input-group">
+                <label for="custo-total-racao">Custo Total da Ração (R$)</label>
+                <input type="number" id="custo-total-racao" step="0.01" min="0" readonly>
+              </div>
+              <div class="input-group">
+                <label for="receita-total-ovos">Receita Total de Ovos (R$)</label>
+                <input type="number" id="receita-total-ovos" step="0.01" min="0" readonly>
+              </div>
+            </div>
 
-            document.getElementById(pageId).style.display = 'block';
-        }
-    </script>
-</body>
-</html>
-<!-- partial -->
-  <script  src="./script.js"></script>
-
+            <button type="submit" class="submit-registro">Salvar Registro</button>
+          </form>
+        </section>
+      </main>
+    </section>
+  </div>
 </body>
 </html>
